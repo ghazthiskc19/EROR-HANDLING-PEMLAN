@@ -3,15 +3,23 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class FileReaderExample1 {
+public class FileReaderExample2 {
     public static void main(String[] args) {
         BufferedReader reader = null;
         try {
+            String[] listTulisan = new String[100];
             reader = new BufferedReader(new FileReader("data.txt"));
             String line;
             System.out.println("Isi file");
+            int index = 0;
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
+                listTulisan[index++] = line;
+            }
+
+            System.out.println("\nIsi array secara langsung:");
+            for (int i = 0; i < index; i++) {
+                System.out.println("Array[" + i + "]: " + listTulisan[i]);
             }
 
         } catch (FileNotFoundException e) {
